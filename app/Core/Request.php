@@ -4,13 +4,18 @@ namespace App\Core;
 
 class Request
 {
-    public function getMethod(): string
+    public function getPath()
     {
-        return $_SERVER['REQUEST_METHOD'];
+        $path = $_SERVER['REQUEST_URI'] ?? '/';
+        $position = strpos($path, '?');
+        if ($position === false) {
+            return $path;
+        }
+        return substr($path, 0, $position);
     }
 
-    public function getPath(): string
+    public function method()
     {
-        return explode('?', $_SERVER['REQUEST_URI'])[0];
+        return strtolower($_SERVER['REQUEST_METHOD']);
     }
 }

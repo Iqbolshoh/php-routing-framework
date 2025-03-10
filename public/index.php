@@ -9,7 +9,11 @@ use App\Core\Router;
 $router = new Router();
 
 $router->get('/', function () {
-    return "Salom!";
+    return 'user.php';
+});
+
+$router->get('/about', function () {
+    return "Haqqimda!";
 });
 
 $router->get('/home', function () {

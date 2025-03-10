@@ -4,33 +4,25 @@ namespace App\Core;
 
 class Router
 {
-    private array $routes = [];
+    protected $routes = [];
 
-    public function get(string $path, callable $callback): void
+    public function get($uri, $callback)
     {
-        $this->routes['GET'][$path] = $callback;
+        $this->routes['GET'][$uri] = $callback;
     }
 
-    public function post(string $path, callable $callback): void
+    public function post($uri, $callback)
     {
-        $this->routes['POST'][$path] = $callback;
+        $this->routes['POST'][$uri] = $callback;
     }
 
-    public function resolve(): void
+    public function resolve($requestUri, $requestMethod)
     {
-        $requestUri = $_SERVER['REQUEST_URI'];
+        $callback = $this->routes[$requestMethod][$requestUri] ?? false;
 
-        $requestUri = str_replace('/public', '', $requestUri);
-
-        $requestUri = explode('?', $requestUri)[0];
-
-        $method = $_SERVER['REQUEST_METHOD'];
-
-        $callback = $this->routes[$method][$requestUri] ?? null;
-
-        if (!$callback) {
+        if ($callback === false) {
             http_response_code(404);
-            echo "404 - Not Found";
+            echo "404 Not Found";
             return;
         }
 
