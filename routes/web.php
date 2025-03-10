@@ -7,3 +7,7 @@ $router->get('/', function() {
 $router->get('/about', function() {
     return 'About us page';
 });
+
+$router->get('/new', function() {
+    return 'About us page';
+});
