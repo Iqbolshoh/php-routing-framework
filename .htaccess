@@ -1,7 +1,16 @@
 <IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews
+    </IfModule>
 
     RewriteEngine On
 
-    RewriteCond %{REQUEST_URI} !^/public
-    RewriteRule ^(.*)$ /public/$1 [L]
+    # Trailing slashtlarni olib tashlash
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+    # Agar so'ralgan fayl yoki papka mavjud bo'lmasa, index.php ga yo'naltirish
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ public/index.php [L]
 </IfModule>
