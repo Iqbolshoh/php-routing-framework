@@ -6,32 +6,17 @@ class Router
 {
     protected $routes = [];
 
-    public function get($uri, $callback)
+    public function add($route, $callback)
     {
-        $this->routes['GET'][$uri] = $callback;
+        $this->routes[$route] = $callback;
     }
 
-    public function post($uri, $callback)
+    public function dispatch($url)
     {
-        $this->routes['POST'][$uri] = $callback;
-    }
-
-    public function resolve($requestUri, $requestMethod)
-    {
-        $uri = $this->sanitizeUri($requestUri);
-        $callback = $this->routes[$requestMethod][$uri] ?? false;
-
-        if ($callback === false) {
-            http_response_code(404);
+        if (array_key_exists($url, $this->routes)) {
+            call_user_func($this->routes[$url]);
+        } else {
             echo "404 Not Found";
-            return;
         }
-
-        echo call_user_func($callback);
-    }
-
-    protected function sanitizeUri($uri)
-    {
-        return rtrim(parse_url($uri, PHP_URL_PATH), '/');
     }
 }

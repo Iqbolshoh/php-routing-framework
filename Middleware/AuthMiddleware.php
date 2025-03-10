@@ -6,6 +6,10 @@ class AuthMiddleware
 {
     public function handle()
     {
-        // Authentication logic
+        // Auth logic here
+        if (!isset($_SESSION['user'])) {
+            header('Location: /login');
+            exit();
+        }
     }
 }

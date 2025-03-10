@@ -14,8 +14,8 @@ class Request
         return substr($path, 0, $position);
     }
 
-    public function method()
+    public function getMethod()
     {
-        return strtoupper($_SERVER['REQUEST_METHOD']);
+        return strtolower($_SERVER['REQUEST_METHOD']);
     }
 }

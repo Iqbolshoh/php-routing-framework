@@ -1,17 +1,17 @@
 <?php
 
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once '../vendor/autoload.php';
 
-use App\Core\Router;
 use App\Core\Request;
+use App\Core\Router;
 use App\Core\Response;
 
-$router = new Router();
-
-require_once __DIR__ . '/../routes/web.php';
-require_once __DIR__ . '/../routes/api.php';
-
+// Initialize the routing system
 $request = new Request();
 $response = new Response();
+$router = new Router();
 
-$router->resolve($request->getPath(), strtoupper($request->method()));
+require_once '../routes/web.php';
+
+$url = $request->getPath();
+$router->dispatch($url);

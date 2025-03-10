@@ -1,5 +1,11 @@
 <?php
 
-$router->get('/api/users', function() {
-    return json_encode(['user1', 'user2', 'user3']);
+use App\Core\Router;
+
+$router = new Router();
+
+$router->add('/api/users', function() {
+    echo json_encode(['users' => []]);
 });
+
+// Add more API routes here

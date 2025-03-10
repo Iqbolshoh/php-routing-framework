@@ -6,6 +6,10 @@ class CsrfMiddleware
 {
     public function handle()
     {
-        // CSRF protection logic
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (!isset($_POST['_token']) || $_POST['_token'] !== $_SESSION['_token']) {
+                die('Invalid CSRF token');
+            }
+        }
     }
 }

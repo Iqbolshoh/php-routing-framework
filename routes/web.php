@@ -1,13 +1,15 @@
 <?php
 
-$router->get('/', function () {
-    return 'Welcome to the homepage!';
+use App\Core\Router;
+
+$router = new Router();
+
+$router->add('/', function() {
+    echo "Welcome to the homepage!";
 });
 
-$router->get('/about', function () {
-    return 'About us page';
+$router->add('/about', function() {
+    echo "About us page.";
 });
 
-$router->get('/new', function () {
-    return 'New page';
-});
+// Add more routes here
