@@ -4,7 +4,7 @@ use App\Core\Router;
 
 $router = new Router();
 
-$router->get('/api/users', function() {
+Router::get('/api/users', function () {
     echo json_encode(['users' => []]);
 });
 
