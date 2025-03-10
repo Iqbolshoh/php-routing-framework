@@ -4,7 +4,7 @@ namespace App\Core;
 
 class Router
 {
-    protected static $routes = [
+    protected $routes = [
         'GET' => [],
         'POST' => [],
         'PUT' => [],
@@ -12,45 +12,38 @@ class Router
         'PATCH' => [],
     ];
 
-    public static function get($route, $callback)
+    public function get($route, $callback)
     {
-        self::$routes['GET'][$route] = $callback;
+        $this->routes['GET'][$route] = $callback;
     }
 
-    public static function post($route, $callback)
+    public function post($route, $callback)
     {
-        self::$routes['POST'][$route] = $callback;
+        $this->routes['POST'][$route] = $callback;
     }
 
-    public static function put($route, $callback)
+    public function put($route, $callback)
     {
-        self::$routes['PUT'][$route] = $callback;
+        $this->routes['PUT'][$route] = $callback;
     }
 
-    public static function delete($route, $callback)
+    public function delete($route, $callback)
     {
-        self::$routes['DELETE'][$route] = $callback;
+        $this->routes['DELETE'][$route] = $callback;
     }
 
-    public static function patch($route, $callback)
+    public function patch($route, $callback)
     {
-        self::$routes['PATCH'][$route] = $callback;
+        $this->routes['PATCH'][$route] = $callback;
     }
 
-    public static function dispatch($url, $method)
+    public function dispatch($url, $method)
     {
         $method = strtoupper($method);
-        foreach (self::$routes[$method] as $route => $callback) {
-            if (preg_match(self::convertToRegex($route), $url, $matches)) {
-                array_shift($matches);
-                return call_user_func_array($callback, $matches);
-            }
+        if (array_key_exists($url, $this->routes[$method])) {
+            call_user_func($this->routes[$method][$url]);
+        } else {
+            echo "404 Not Found";
         }
-        echo "404 Not Found";
-    }
-
-    private static function convertToRegex($route)
-    {
-        return '/^' . str_replace(['{', '}'], ['(?P<', '>[^\/]+)'], $route) . '$/';
     }
 }

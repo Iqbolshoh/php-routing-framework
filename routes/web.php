@@ -1,24 +1,17 @@
 <?php
 
 use App\Core\Router;
-use function App\Helpers\view;
 
-Router::get('/', function () {
-    return view('welcome');
+$router = new Router();
+
+$router->get('/', function () {
+    echo "Welcome to the homepage!";
 });
 
-Router::get('/about', function () {
-    return view('about');
+$router->get('/about', function () {
+    echo "About us page.";
 });
 
-Router::get('/submit', function () {
-    return view('submit');
-});
-
-Router::get('/user/{name}', function ($name) {
-    return view('users.main', ['name' => $name]);
-});
-
-Router::get('/user/{name}', function ($name) {
-    return view('users.main')->with('name', $name);
+$router->get('/submit', function () {
+    echo "Form submitted.";
 });
