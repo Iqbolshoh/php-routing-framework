@@ -9,10 +9,9 @@ use App\Core\Response;
 // Initialize the routing system
 $request = new Request();
 $response = new Response();
-$router = new Router();
 
 require_once '../routes/web.php';
 
 $url = $request->getPath();
 $method = $request->getMethod();
-$router->dispatch($url, $method);
+Router::dispatch($url, $method);

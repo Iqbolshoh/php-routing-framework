@@ -7,20 +7,17 @@ class RouterTest extends TestCase
 {
     public function testAddRoute()
     {
-        $router = new Router();
-        $router->add('/test', function () {
-            return 'test';
+        Router::get('/test', function () {
+            echo 'test';
         });
 
         $this->expectOutputString('test');
-        $router->dispatch('/test');
+        Router::dispatch('/test', 'get');
     }
 
     public function testRouteNotFound()
     {
-        $router = new Router();
-
         $this->expectOutputString('404 Not Found');
-        $router->dispatch('/non-existent-route');
+        Router::dispatch('/non-existent-route', 'get');
     }
 }
