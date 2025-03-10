@@ -16,5 +16,4 @@ $router->get('/home', function () {
     return "Bosh sahifa!";
 });
 
-
 $router->resolve();

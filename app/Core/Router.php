@@ -2,9 +2,6 @@
 
 namespace App\Core;
 
-use App\Core\Request;
-use App\Core\Response;
-
 class Router
 {
     private array $routes = [];
@@ -21,20 +18,22 @@ class Router
 
     public function resolve(): void
     {
-        $request = new Request();
-        $response = new Response();
+        $requestUri = $_SERVER['REQUEST_URI'];
 
-        $method = $request->getMethod();
-        $path = $request->getPath();
+        $requestUri = str_replace('/public', '', $requestUri);
 
-        $callback = $this->routes[$method][$path] ?? null;
+        $requestUri = explode('?', $requestUri)[0];
+
+        $method = $_SERVER['REQUEST_METHOD'];
+
+        $callback = $this->routes[$method][$requestUri] ?? null;
 
         if (!$callback) {
-            $response->setStatusCode(404);
+            http_response_code(404);
             echo "404 - Not Found";
             return;
         }
 
-        echo call_user_func($callback, $request, $response);
+        echo call_user_func($callback);
     }
 }
