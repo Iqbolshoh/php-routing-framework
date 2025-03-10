@@ -1,0 +1,28 @@
+# 🛠 Composer `vendor/` directory should not be included
+/vendor/
+
+# 🛠 Cache, logs, and temporary files
+/storage/logs/
+storage/cache/
+storage/framework/sessions/
+storage/framework/views/
+storage/framework/cache/
+
+# 🛠 `node_modules/` if frontend is used
+/node_modules/
+
+# 🛠 IDE and OS files
+.idea/
+.vscode/
+*.swp
+*.swo
+*.bak
+*.tmp
+*.DS_Store
+Thumbs.db
+
+# 🛠 Debug and error logs
+*.log
+php_errorlog
+
+file
