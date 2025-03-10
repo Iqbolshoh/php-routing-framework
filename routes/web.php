@@ -4,12 +4,14 @@ use App\Core\Router;
 
 $router = new Router();
 
-$router->add('/', function() {
+$router->get('/', function () {
     echo "Welcome to the homepage!";
 });
 
-$router->add('/about', function() {
+$router->get('/about', function () {
     echo "About us page.";
 });
 
-// Add more routes here
+$router->get('/submit', function () {
+    echo "Form submitted.";
+});

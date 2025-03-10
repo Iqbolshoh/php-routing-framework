@@ -14,4 +14,5 @@ $router = new Router();
 require_once '../routes/web.php';
 
 $url = $request->getPath();
-$router->dispatch($url);
+$method = $request->getMethod();
+$router->dispatch($url, $method);
