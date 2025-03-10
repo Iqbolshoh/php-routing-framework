@@ -4,7 +4,7 @@ namespace App\Core;
 
 class Router
 {
-    protected $routes = [
+    protected static $routes = [
         'GET' => [],
         'POST' => [],
         'PUT' => [],
@@ -12,36 +12,36 @@ class Router
         'PATCH' => [],
     ];
 
-    public function get($route, $callback)
+    public static function get($route, $callback)
     {
-        $this->routes['GET'][$route] = $callback;
+        self::$routes['GET'][$route] = $callback;
     }
 
-    public function post($route, $callback)
+    public static function post($route, $callback)
     {
-        $this->routes['POST'][$route] = $callback;
+        self::$routes['POST'][$route] = $callback;
     }
 
-    public function put($route, $callback)
+    public static function put($route, $callback)
     {
-        $this->routes['PUT'][$route] = $callback;
+        self::$routes['PUT'][$route] = $callback;
     }
 
-    public function delete($route, $callback)
+    public static function delete($route, $callback)
     {
-        $this->routes['DELETE'][$route] = $callback;
+        self::$routes['DELETE'][$route] = $callback;
     }
 
-    public function patch($route, $callback)
+    public static function patch($route, $callback)
     {
-        $this->routes['PATCH'][$route] = $callback;
+        self::$routes['PATCH'][$route] = $callback;
     }
 
-    public function dispatch($url, $method)
+    public static function dispatch($url, $method)
     {
         $method = strtoupper($method);
-        if (array_key_exists($url, $this->routes[$method])) {
-            call_user_func($this->routes[$method][$url]);
+        if (array_key_exists($url, self::$routes[$method])) {
+            call_user_func(self::$routes[$method][$url]);
         } else {
             echo "404 Not Found";
         }

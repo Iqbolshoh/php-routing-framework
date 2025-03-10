@@ -2,16 +2,10 @@
 
 use App\Core\Router;
 
-$router = new Router();
-
-$router->get('/', function () {
-    echo "Welcome to the homepage!";
+Router::get('/home', function () {
+    echo "Home Page";
 });
 
-$router->get('/about', function () {
-    echo "About us page.";
-});
-
-$router->get('/submit', function () {
-    echo "Form submitted.";
+Router::post('/submit', function () {
+    echo "Form Submitted";
 });
