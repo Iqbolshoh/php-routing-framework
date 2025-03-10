@@ -16,6 +16,6 @@ class Request
 
     public function method()
     {
-        return strtolower($_SERVER['REQUEST_METHOD']);
+        return strtoupper($_SERVER['REQUEST_METHOD']);
     }
 }

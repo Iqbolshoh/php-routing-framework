@@ -18,7 +18,8 @@ class Router
 
     public function resolve($requestUri, $requestMethod)
     {
-        $callback = $this->routes[$requestMethod][$requestUri] ?? false;
+        $uri = $this->sanitizeUri($requestUri);
+        $callback = $this->routes[$requestMethod][$uri] ?? false;
 
         if ($callback === false) {
             http_response_code(404);
@@ -27,5 +28,10 @@ class Router
         }
 
         echo call_user_func($callback);
+    }
+
+    protected function sanitizeUri($uri)
+    {
+        return rtrim(parse_url($uri, PHP_URL_PATH), '/');
     }
 }
