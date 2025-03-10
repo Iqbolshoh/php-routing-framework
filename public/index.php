@@ -1,23 +1,17 @@
 <?php
 
-require_once __DIR__ . '/../app/Core/Router.php';
-require_once __DIR__ . '/../app/Core/Request.php';
-require_once __DIR__ . '/../app/Core/Response.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\Core\Router;
+use App\Core\Request;
+use App\Core\Response;
 
 $router = new Router();
 
-$router->get('/', function () {
-    return 'user.php';
-});
+require_once __DIR__ . '/../routes/web.php';
+require_once __DIR__ . '/../routes/api.php';
 
-$router->get('/about', function () {
-    return "Haqqimda!";
-});
+$request = new Request();
+$response = new Response();
 
-$router->get('/home', function () {
-    return "Bosh sahifa!";
-});
-
-$router->resolve();
+$router->resolve($request->getPath(), strtoupper($request->method()));
