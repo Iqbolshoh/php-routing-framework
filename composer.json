@@ -1,22 +1,10 @@
 {
-  "name": "iqbolshoh/php-route-core",
-  "description": "Minimalistik PHP Routing tizimi",
-  "type": "library",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Iqbolshoh Ilhomjonov",
-      "email": "iilhomjonov777@example.com"
-    }
-  ],
+  "require": {
+    "php": ">=7.4"
+  },
   "autoload": {
     "psr-4": {
-      "Core\\": "core/",
       "App\\": "app/"
     }
-  },
-  "require": {
-    "php": ">=7.4",
-    "vlucas/phpdotenv": "^5.6"
   }
 }
