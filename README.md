@@ -31,7 +31,7 @@
 
 1️⃣ **Clone the repository**
 ```bash
-git clone https://github.com/Iqbolshoh/php-route-core.git
+git clone https://github.com/Iqbolshoh/php-routing-framework
 ```
 
 2️⃣ **Install dependencies using Composer**
@@ -47,18 +47,13 @@ Make sure `.htaccess` is enabled for pretty URLs.
 ### ➕ Adding a New Route
 To add a new route, modify the `routes/web.php` file:
 ```php
-$router->get('/home', function() {
-    echo 'Home Page';
+Router::get('/', function () {
+    View::render('home');
 });
-```
 
-### 🔒 Using Middleware
-Middleware files are stored in the `Middleware/` directory and can be used to add security layers and request validations.
-
-## ✅ Running Tests
-To run tests for the routing system, execute:
-```bash
-php tests/RouterTest.php
+Router::get('/about', function () {
+    echo "<h1>Hello this is About page</h1>";
+});
 ```
 
 ## 📜 License
