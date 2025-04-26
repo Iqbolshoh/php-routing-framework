@@ -6,7 +6,7 @@ class View
 {
     public static function render($view, $data = [])
     {
-        $viewPath = __DIR__ . "/../../resources/views/{$view}.php";
+        $viewPath = __DIR__ . "/../Views/{$view}.php";
 
         if (file_exists($viewPath)) {
             extract($data);
