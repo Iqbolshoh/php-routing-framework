@@ -4,44 +4,32 @@ namespace App\Core;
 
 class Router
 {
-    protected static $routes = [
-        'GET' => [],
-        'POST' => [],
-        'PUT' => [],
-        'DELETE' => [],
-        'PATCH' => [],
-    ];
+    protected static $routes = [];
+
+    public static function add(string $method, string $route, callable $callback)
+    {
+        $method = strtoupper($method);
+        $route = rtrim($route, '/') ?: '/';
+        self::$routes[$method][$route] = $callback;
+    }
 
     public static function get($route, $callback)
     {
-        self::$routes['GET'][$route] = $callback;
+        self::add('GET', $route, $callback);
     }
 
     public static function post($route, $callback)
     {
-        self::$routes['POST'][$route] = $callback;
+        self::add('POST', $route, $callback);
     }
 
-    public static function put($route, $callback)
+    public static function dispatch(Request $request)
     {
-        self::$routes['PUT'][$route] = $callback;
-    }
+        $method = $request->getMethod();
+        $url = $request->getPath();
 
-    public static function delete($route, $callback)
-    {
-        self::$routes['DELETE'][$route] = $callback;
-    }
-
-    public static function patch($route, $callback)
-    {
-        self::$routes['PATCH'][$route] = $callback;
-    }
-
-    public static function dispatch($url, $method)
-    {
-        $method = strtoupper($method);
-        if (array_key_exists($url, self::$routes[$method])) {
-            call_user_func(self::$routes[$method][$url]);
+        if (isset(self::$routes[$method][$url])) {
+            call_user_func(self::$routes[$method][$url], $request);
         } else {
             self::render404();
         }

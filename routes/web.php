@@ -4,11 +4,15 @@ use App\Core\Router;
 use App\Core\View;
 
 Router::get('/', function () {
-    echo "<h1>Hello</h1>";
+    View::render('home');
 });
 
 Router::get('/about', function () {
-    View::render('about');
+    echo "<h1>Hello this is About page</h1>";
+});
+
+Router::get('/home/user/profile/edit', function () {
+    echo "<h1>Edit Profile</h1>";
 });
 
 Router::post('/submit', function () {
