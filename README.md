@@ -1,6 +1,6 @@
 # 📂 PHP Routing Framework
 
-`php-route-core` is a lightweight and efficient PHP routing engine designed to manage URL routes in web applications.
+`php-routing-framework` is a lightweight and efficient PHP routing engine designed to manage URL routes in web applications.
 
 ## 📂 Project Structure
 ```
