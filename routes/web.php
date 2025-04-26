@@ -11,7 +11,13 @@ Router::get('/about', function () {
     echo "<h1>Hello this is About page</h1>";
 });
 
-Router::get('/home/user/profile/edit', function () {
+Router::get('/user/profile', function () {
+    echo "<h1>User Profile</h1>";
+    echo "<h4>Iqolshoh Ilhomjonov</h4>";
+    echo "<p>Full stack developer</p>";
+});
+
+Router::get('/user/profile/edit', function () {
     echo "<h1>Edit Profile</h1>";
 });
 
