@@ -1,4 +1,4 @@
-# 📂 php-route-core
+# 📂 PHP Routing Framework
 
 `php-route-core` is a lightweight and efficient PHP routing engine designed to manage URL routes in web applications.
 
