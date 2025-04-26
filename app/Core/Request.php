@@ -6,13 +6,17 @@ class Request
 {
     public function getPath()
     {
-        $path = $_SERVER['REQUEST_URI'] ?? '/';
-        $path = parse_url($path, PHP_URL_PATH);
-        return rtrim($path, '/') ?: '/';
+        $path = $_SERVER['REQUEST_URI'];
+        $position = strpos($path, '?');
+        if ($position === false) {
+            return $path;
+        }
+        return substr($path, 0, $position);
     }
 
     public function getMethod()
     {
-        return strtoupper($_SERVER['REQUEST_METHOD']);
+        return strtolower($_SERVER['REQUEST_METHOD']);
     }
 }
+
