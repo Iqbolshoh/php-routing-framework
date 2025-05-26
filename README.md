@@ -2,18 +2,6 @@
 
 Welcome to `php-routing-framework` — your ultimate multi-functional PHP routing engine designed for modern web apps! 🚀
 
-## 💡 Why Choose This Framework?
-
-* **Lightweight & Fast** ⚡ — Minimal footprint, optimized for speed.
-* **Multi-functional Routing** 🎯 — Supports GET, POST, PUT, DELETE routes and more.
-* **Clean Code Structure** 📂 — Modular design: clear separation of concerns.
-* **Middleware Ready** 🛡️ — Add pre/post-processing for requests (auth, logging).
-* **REST API Friendly** 🌐 — Easily manage API endpoints alongside web routes.
-* **Custom Response Handling** 📤 — Send JSON, HTML, redirects, or custom headers.
-* **Environment Config Support** 🌍 — `.env` ready for flexible deployment.
-* **Unit Tested** 🧪 — Stability ensured with built-in tests.
-
-
 ## 📂 Project Structure
 ```
 /php-route-core
@@ -38,6 +26,16 @@ Welcome to `php-routing-framework` — your ultimate multi-functional PHP routin
 │── composer.json         # PHP dependencies (Composer)
 │── README.md             # Project documentation
 ```
+## 💡 Why Choose This Framework?
+
+* **Lightweight & Fast** ⚡ — Minimal footprint, optimized for speed.
+* **Multi-functional Routing** 🎯 — Supports GET, POST, PUT, DELETE routes and more.
+* **Clean Code Structure** 📂 — Modular design: clear separation of concerns.
+* **Middleware Ready** 🛡️ — Add pre/post-processing for requests (auth, logging).
+* **REST API Friendly** 🌐 — Easily manage API endpoints alongside web routes.
+* **Custom Response Handling** 📤 — Send JSON, HTML, redirects, or custom headers.
+* **Environment Config Support** 🌍 — `.env` ready for flexible deployment.
+* **Unit Tested** 🧪 — Stability ensured with built-in tests.
 
 ## 📌 Installation
 
