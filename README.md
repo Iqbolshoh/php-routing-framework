@@ -1,4 +1,4 @@
-# 📂 PHP Routing Framework
+# 🔀 PHP Routing Framework
 
 `php-routing-framework` is a lightweight and efficient PHP routing engine designed to manage URL routes in web applications.
 
@@ -56,11 +56,7 @@ Router::get('/about', function () {
 });
 ```
 
-
 ## 🖥 Technologies Used
-![HTML](https://img.shields.io/badge/HTML-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
-![CSS](https://img.shields.io/badge/CSS-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-%23F7DF1C.svg?style=for-the-badge&logo=javascript&logoColor=black)
 ![PHP](https://img.shields.io/badge/PHP-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-%234479A1.svg?style=for-the-badge&logo=mysql&logoColor=white)
 
